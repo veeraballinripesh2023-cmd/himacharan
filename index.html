@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Round Robin CPU Scheduling — Interactive Visualizer</title>
+<link rel="stylesheet" href="style.css" />
+<style>
+body {
+font-family: "Segoe UI", sans-serif;
+background-color: #050b1f;
+color: #cdd5ff;
+margin: 0;
+padding: 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: flex-start;
+min-height: 100vh;
+}
+h1 {
+text-align: center;
+margin-top: 20px;
+font-size: 22px;
+color: #e0e7ff;
+}
+#main {
+display: flex;
+flex-direction: row;
+justify-content: center;
+margin-top: 25px;
+width: 95%;
+max-width: 1300px;
+gap: 24px;
+}
+#input-panel {
+background: #0a112f;
+border-radius: 14px;
+padding: 20px;
+width: 270px;
+box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+label {
+display: block;
+margin-top: 10px;
+font-weight: 500;
+}
+input, select, button {
+margin-top: 6px;
+margin-bottom: 10px;
+border-radius: 6px;
+border: none;
+padding: 6px 10px;
+font-size: 14px;
+}
+button {
+background-color: #1e3aff;
+color: white;
+cursor: pointer;
+transition: 0.2s;
+}
+button:hover { background-color: #4258ff; }
+#table-container {
+margin-top: 10px;
+max-height: 150px;
+overflow-y: auto;
+border-top: 1px solid #2d3666;
+padding-top: 5px;
+}
+table { width: 100%; border-collapse: collapse; text-align: center; }
+th, td { padding: 4px; }
+th {
+color: #9faaff;
+font-weight: 600;
+border-bottom: 1px solid #2c3470;
+}
+td[contenteditable="true"] { background-color: #151b45; }
+#canvas-panel {
+flex: 1;
+background: #0a112f;
+border-radius: 14px;
+padding: 20px;
+box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+#stage {
+background-color: #0b1028;
+border: 1px solid #20285e;
+border-radius: 12px;
+width: 100%;
+height: 220px;
+}
+#controls {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+margin-top: 15px;
+}
+#stats { margin-top: 20px; font-size: 14px; line-height: 1.6; }
+pre {
+background: #0b112d;
+padding: 8px;
+border-radius: 8px;
+font-size: 12px;
+height: 100px;
+overflow-y: auto;
+}
+</style>
+</head>
+<body>
+<h1>Round Robin CPU Scheduling — Interactive Visualizer</h1>
+<div id="main">
+<!-- Left panel for user input -->
+<div id="input-panel">
+<h3>Input</h3>
+<label for="tq">Time Quantum (ms)</label>
+<input id="tq" type="number" value="4" min="1" />
+<label for="speed">Animation Speed</label>
+<select id="speed">
+<option value="1">1×</option>
+<option value="2">2×</option>
+<option value="3">3×</option>
+</select>
+<div>
+<button id="btnAdd">+ Add Process</button>
+<button id="btnClear">Clear</button>
+<button id="btnBuild">Build Schedule</button>
+</div>
+<div id="table-container">
+<table>
+<thead>
+<tr>
+<th>PID</th>
+<th>Arrival</th>
+<th>Burst</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+<!-- Simulation control buttons -->
+<div id="controls">
+<button id="btnPlay">▶ Play</button>
+<button id="btnPause">◻ Pause</button>
+<button id="btnStepBack">◻ Step Back</button>
+<button id="btnStep">◻ Step</button>
+<button id="btnReset">↻ Reset</button>
+</div>
+<!-- Export buttons -->
+<div id="controls">
+<button id="btnExportPNG">🖼 Export Screenshot</button>
+<button id="btnExportCSV">📄 Export Trace</button>
+</div>
+</div>
+<!-- Right panel: Canvas, Stats, Logs -->
+<div id="canvas-panel">
+<canvas id="stage" width="1200" height="300"></canvas>
+<div id="stats">
+<h3>Statistics</h3>
+<div>Avg Waiting Time: <span id="statAWT">—</span></div>
+<div>Avg Turnaround Time: <span id="statATAT">—</span></div>
+<div>Throughput: <span id="statTH">—</span></div>
+<div>CPU Utilization: <span id="statCPU">—</span></div>
+</div>
+<h3>Event Log</h3>
+<pre id="log"></pre>
+</div>
+</div>
+<script type="module" src="./js/app.js"></script>
+</body>
+</html>
+2.style.css
+A
