@@ -1,0 +1,52 @@
+/* ======== GENERAL PAGE STYLING ======== */
+body {
+background: #0b1020;
+color: #d7dcff;
+font-family: 'Segoe UI', sans-serif;
+margin: 0;
+padding: 0;
+}
+main {
+display: flex;
+gap: 20px;
+padding: 20px;
+}
+/* ======== CARD CONTAINERS ======== */
+.card {
+background: #131a36;
+border-radius: 12px;
+padding: 16px;
+margin-bottom: 10px;
+box-shadow: 0 0 6px #1c2452;
+}
+/* ======== BUTTON STYLING ======== */
+button {
+background: #1e3aff;
+color: white;
+border: none;
+padding: 6px 10px;
+border-radius: 6px;
+margin: 4px;
+cursor: pointer;
+}
+button:hover { background: #2a4bff; }
+/* ======== TABLE STYLING ======== */
+table {
+width: 100%;
+color: #fff;
+border-collapse: collapse;
+}
+th, td {
+border-bottom: 1px solid #333;
+padding: 4px;
+text-align: center;
+}
+/* ======== FOOTER ======== */
+footer {
+text-align: center;
+margin: 20px 0;
+color: #999;
+}
+/* ======== MISC ======== */
+.muted { color: #9fb0ff; font-size: 14px; margin-top: 6px; }
+.stat { margin-top: 4px; font-size: 15px; }
